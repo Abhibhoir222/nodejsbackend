@@ -19,16 +19,38 @@
 // }else{
 //     console.log("invalid input");
 // }
-const fs = require('fs');
-const path = require('path');
-const dirPath = path.join(__dirname,'files');
+// const fs = require('fs');
+// const path = require('path');
+// const dirPath = path.join(__dirname,'files');
 
 // for(i =0;i <5;i++){
 //     fs.writeFileSync(dirPath+"/hello"+i+".txt","a simple file");
 // }
 
-fs.readdir(dirPath,(err,files)=>{
-    files.forEach((item)=>{
-        console.log(item);
-    })
+// fs.readdir(dirPath,(err,files)=>{
+//     files.forEach((item)=>{
+//         console.log(ite,);
+//     })
+// })
+
+const fs = require('fs');
+const http = require('http');
+const path = require('path');
+const dirPath =path.join(__dirname,'curd');
+
+const filePath = `${dirPath}/apple.txt`;
+
+// fs.writeFileSync(filePath,"this is the apple file")
+// fs.readFile(filePath,'utf8',(err,item)=>{
+//     if (err) {console.log(err);}else{
+//        console.log(item); 
+//     }
+    
+// })
+// fs.appendFile(filePath,"and this is append file system aaple.txt",(err)=>{
+//     if(!err) console.log("file appened");
+// })
+fs.rename(filePath,`${dirPath}/fruts.txt`,(err)=>{
+    if(!err) console.log("file appened");
+
 })
