@@ -33,6 +33,7 @@
 //     })
 // })
 
+const { promises } = require('dns');
 const fs = require('fs');
 const http = require('http');
 const path = require('path');
@@ -50,7 +51,24 @@ const filePath = `${dirPath}/apple.txt`;
 // fs.appendFile(filePath,"and this is append file system aaple.txt",(err)=>{
 //     if(!err) console.log("file appened");
 // })
-fs.rename(filePath,`${dirPath}/fruts.txt`,(err)=>{
-    if(!err) console.log("file appened");
+// fs.rename(filePath,`${dirPath}/fruts.txt`,(err)=>{
+//     if(!err) console.log("file appened");
+// })  
 
+// promisses and call back for handle asynchrones call 
+
+
+let a = 10;
+ let b = 0;
+
+let waitData = new Promise((resolve, reject)=>{
+    setTimeout(()=>{
+        resolve(30)
+    },2000)
 })
+
+
+// waitData.then((data)=>{
+//     b= data;
+//     console.log(a+b);
+// })
