@@ -9,10 +9,16 @@ app.get('/profile',(req,resp)=>{
     const user= {
         name: 'abhishek',
         email:'abhi@gmail.com',
-        city: 'thane'
+        city: 'thane',
+        skills:['php','c','c++','js']
     }
     resp.render('profile',{user});
 })
+app.get('/login',(res,resp)=>{
+    resp.render('login')
+})
+
+
 app.get('',(req,resp)=>{
     resp.sendFile(`${publicPath}/index.html`)
 })
