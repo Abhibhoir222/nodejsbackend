@@ -1,26 +1,15 @@
-const express = require('express')
- const app = express();
+const {MongoClient} = require('mongodb');
+const url = 'mongodb://localhost:27017';
+const database = 'e-comm'
+const client = new MongoClient(url)
 
-const reqFilter=(req,resp,next)=>{
-    if(!req.query.age){
-        resp.send("Please provide age")
-    } else if(req.query.age<18){
-        resp.send("You cannot access this website")
-    }
-    else{
-    next();
 
-    }
+async function getData()
+{
+    let result = await client.connect();
+    let db = result.db(database);
+    let collection = db.collection('products');
+    let response = await collection.find({}).toArray();
+    console.log(response);
 }
-app.use(reqFilter)
-
- app.get('/',(req,resp) =>{
-    resp.send("welcome to home page")
- })
-
- app.get('/users',(req,resp) =>{
-    resp.send("welcome to Users Page")
- })
-
-
- app.listen(3200);
+getData()
